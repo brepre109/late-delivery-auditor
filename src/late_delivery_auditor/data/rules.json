@@ -1,0 +1,502 @@
+{
+  "schema_version": 1,
+  "title": "US parcel carrier service guarantees (money-back guarantee) - default rule table",
+  "checked_on": "2026-09-27",
+  "disclaimer": "Carrier guarantees are suspended, reinstated and changed without notice. Re-check every source_url before filing, and edit this file (or pass --rules) when terms change.",
+  "default": {
+    "guaranteed": false,
+    "reason": "No rule matches this carrier/service; treated as NOT guaranteed."
+  },
+  "carriers": {
+    "FEDEX": {
+      "aliases": [
+        "fedex",
+        "fdx",
+        "fedex express",
+        "fedex ground",
+        "federal express",
+        "fedex home delivery",
+        "fxg",
+        "fxe"
+      ],
+      "service_prefixes": [
+        "fedex"
+      ],
+      "holiday_handling": "extend",
+      "holidays": [
+        "2026-01-01",
+        "2026-05-25",
+        "2026-07-04",
+        "2026-09-07",
+        "2026-11-26",
+        "2026-12-25",
+        "2027-01-01"
+      ],
+      "holidays_verified": false,
+      "holidays_note": "Placeholder list of common US carrier holidays. Replace with the carrier's published holiday schedule. Service Guide (MBG policy B.5): shipments scheduled for delivery on a holiday are delivered the next business day and the commitment is extended by the length of the holiday.",
+      "exclusion_codes": {
+        "WEATHER": "Weather / act of God (Liabilities Not Assumed; MBG exception C.2)",
+        "ACT_OF_GOD": "Act of God (Liabilities Not Assumed; MBG exception C.2)",
+        "INCORRECT_ADDRESS": "Incorrect address or ZIP code (MBG exception C.9)",
+        "ADDRESS_CORRECTION": "Address correction needed (MBG exception C.9)",
+        "RECIPIENT_UNAVAILABLE": "Recipient unavailable / refused to accept or sign (MBG exception C.9)",
+        "SIGNATURE_UNAVAILABLE": "No eligible person available to sign (MBG exception C.9)",
+        "REFUSED": "Delivery refused (MBG exception C.9)",
+        "CUSTOMER_REQUEST": "Shipper/recipient requested later delivery (MBG limitation B.6)",
+        "BUSINESS_CLOSED": "Recipient location reported closed (MBG limitation B.7)",
+        "HOLD_AT_LOCATION": "Rerouted to Hold at Location (MBG exception C.6)",
+        "UNDELIVERABLE": "Undeliverable (MBG exception C.7)",
+        "RETURNED": "Returned to shipper (MBG exception C.7)",
+        "DANGEROUS_GOODS": "Dangerous goods other than dry ice only (MBG exception C.8)",
+        "SECURITY_DELAY": "Security or other regulatory delay (MBG exception C.10)",
+        "REGULATORY_DELAY": "Security or other regulatory delay (MBG exception C.10)",
+        "CUSTOMS": "Customs / regulatory delay (MBG exception C.10)",
+        "OVERSIZE": "Package met the oversize definition (MBG exception C.11)",
+        "CREDIT_HOLD": "Payer account not in good credit standing (MBG exception C.3)"
+      },
+      "calendar_adjustments": [
+        {
+          "id": "fedex-thanksgiving-eve",
+          "kind": "extend_minutes",
+          "when": {
+            "named_day": "wednesday_before_thanksgiving"
+          },
+          "minutes": 90,
+          "applies_to_rules": [
+            "fedex-us-time-definite"
+          ],
+          "verified_on": "2026-09-27",
+          "source_url": "https://www.fedex.com/content/dam/fedex/us-united-states/services/Service_Guide_2026.pdf",
+          "citation": "FedEx Service Guide 2026, U.S. Terms, Money-back guarantee policy C.4: no refund if scheduled for the Wednesday before Thanksgiving and delivered within 90 minutes of the commitment."
+        },
+        {
+          "id": "fedex-christmas-week",
+          "kind": "end_of_day",
+          "when": {
+            "days_before_christmas": 7
+          },
+          "applies_to_rules": [
+            "fedex-us-time-definite"
+          ],
+          "verified_on": "2026-09-27",
+          "source_url": "https://www.fedex.com/content/dam/fedex/us-united-states/services/Service_Guide_2026.pdf",
+          "citation": "FedEx Service Guide 2026, U.S. Terms, Money-back guarantee policy C.5: no refund if scheduled during the 7 calendar days before Christmas Day and delivered by end of day on the commitment date."
+        },
+        {
+          "id": "fedex-2026-labor-day-extension",
+          "kind": "extend_minutes",
+          "when": {
+            "dates": [
+              "2026-09-09",
+              "2026-09-10"
+            ]
+          },
+          "minutes": 90,
+          "only_if_commitment_at_or_before": "13:30",
+          "applies_to_rules": [
+            "fedex-us-time-definite"
+          ],
+          "services_note": "FedEx listed First Overnight, Priority Overnight, 2Day A.M. (and Extra Hours variants) for commitments at 12 p.m. or earlier, and residential 1:30 p.m. commitments. Standard Overnight was NOT listed; this tool applies it to the whole fedex-us-time-definite rule when the commitment is 1:30 p.m. or earlier, which errs toward not flagging.",
+          "verified_on": "2026-09-27",
+          "source_url": "https://www.fedex.com/en-us/service-guide/money-back-guarantee.html",
+          "citation": "FedEx money-back guarantee page, 'Recent holiday delivery commitment times updates - Effective Sept. 9, 2026': commitment times extended by 90 minutes on Sept. 9 and 10, 2026."
+        }
+      ]
+    },
+    "UPS": {
+      "aliases": [
+        "ups",
+        "united parcel service"
+      ],
+      "service_prefixes": [
+        "ups"
+      ],
+      "holiday_handling": "extend",
+      "holidays": [
+        "2026-01-01",
+        "2026-05-25",
+        "2026-07-04",
+        "2026-09-07",
+        "2026-11-26",
+        "2026-12-25",
+        "2027-01-01"
+      ],
+      "holidays_verified": false,
+      "holidays_note": "Placeholder list; see ups.com/holidays. UPS's guaranteed schedule (ups.com/ctc) already accounts for holidays when you take the date from UPS, so this only matters when your promised date came from somewhere else.",
+      "exclusion_codes": {
+        "WEATHER": "Adverse weather conditions (Tariff/Terms 54.2)",
+        "ACT_OF_GOD": "Acts of God / natural disasters (Tariff/Terms 54.2)",
+        "RECIPIENT_UNAVAILABLE": "Unavailability or refusal of a person to accept delivery (Tariff/Terms 54.2)",
+        "SIGNATURE_UNAVAILABLE": "Unavailability of a person to accept delivery (Tariff/Terms 54.2)",
+        "REFUSED": "Refusal to accept delivery (Tariff/Terms 54.2)",
+        "INCORRECT_ADDRESS": "Address label without the consignee's correct name, deliverable address and ZIP (Tariff/Terms 54.1 condition)",
+        "ADDRESS_CORRECTION": "Insufficient information provided by a customer (Tariff/Terms 54.2)",
+        "INSUFFICIENT_INFO": "Insufficient information provided by a customer (Tariff/Terms 54.2)",
+        "CUSTOMER_REQUEST": "UPS Delivery Intercept, Delivery Change Request or UPS My Choice request (Tariff/Terms 54.2)",
+        "DELIVERY_CHANGE": "UPS Delivery Intercept, Delivery Change Request or UPS My Choice request (Tariff/Terms 54.2)",
+        "UNDELIVERABLE": "Undeliverable shipment returned to shipper (Tariff/Terms 37)",
+        "RETURNED": "Undeliverable shipment returned to shipper (Tariff/Terms 37)",
+        "DANGEROUS_GOODS": "Air / 3 Day Select hazardous materials (Tariff/Terms 54.2)",
+        "CUSTOMS": "Acts or omissions of customs or similar authorities (Tariff/Terms 54.2)",
+        "SECURITY_DELAY": "Government security regulations (Tariff/Terms 54.2)",
+        "REGULATORY_DELAY": "Acts of public authorities / authority of law (Tariff/Terms 54.2)",
+        "STRIKE": "Strikes or other labor disputes (Tariff/Terms 54.2)",
+        "NETWORK_DISRUPTION": "Disruptions in air or ground transportation networks, including UPS's own (Tariff/Terms 54.2)",
+        "LARGE_PACKAGE": "Large Package Surcharge (Tariff/Terms 54.2)",
+        "ADDITIONAL_HANDLING": "Additional Handling fee (Tariff/Terms 54.2)",
+        "OVERSIZE": "Exceeds maximum size or weight limits (Tariff/Terms 54.2)",
+        "CALL_TAG": "Shipment made using a Call Tag (Tariff/Terms 54.2)"
+      },
+      "calendar_adjustments": []
+    },
+    "USPS": {
+      "aliases": [
+        "usps",
+        "united states postal service",
+        "us postal service",
+        "postal service",
+        "stamps com",
+        "endicia"
+      ],
+      "service_prefixes": [
+        "usps"
+      ],
+      "holiday_handling": "none",
+      "holidays": [],
+      "holidays_verified": false,
+      "holidays_note": "Priority Mail Express guarantees are quoted at mailing and already include holidays; no holiday shift is applied. Holidays listed here are only skipped when counting business days for the Dec 22-25 exception.",
+      "exclusion_codes": {
+        "LAW_ENFORCEMENT": "Properly detained for law enforcement (DMM 604.9.5.5)",
+        "STRIKE": "Strike or work stoppage (DMM 604.9.5.5)",
+        "INCORRECT_ADDRESS": "Incorrect ZIP Code or address (DMM 604.9.5.5)",
+        "ADDRESS_CORRECTION": "Incorrect ZIP Code or address (DMM 604.9.5.5)",
+        "FORWARDED": "Forwarding or return service after the item was made available (DMM 604.9.5.5)",
+        "RETURNED": "Forwarding or return service after the item was made available (DMM 604.9.5.5)",
+        "CUSTOMER_REQUEST": "Addressee made a written request to hold for delayed delivery (DMM 604.9.5.5)",
+        "UNDELIVERABLE": "Undeliverable as addressed (DMM 604.9.5.5)",
+        "WEATHER": "Act of God - only if authorized by USPS Headquarters (DMM 604.9.5.5)",
+        "ACT_OF_GOD": "Act of God - only if authorized by USPS Headquarters (DMM 604.9.5.5)",
+        "NETWORK_DISRUPTION": "Transportation network breakdown / flight delays - only if authorized by USPS Headquarters (DMM 604.9.5.5)",
+        "LIVE_ANIMALS": "Live animals or hazardous materials delivered/attempted within 3 days of mailing (DMM 604.9.5.5)",
+        "DANGEROUS_GOODS": "Live animals or hazardous materials delivered/attempted within 3 days of mailing (DMM 604.9.5.5)"
+      },
+      "calendar_adjustments": [
+        {
+          "id": "usps-pme-1day-dec22-25",
+          "kind": "ship_window_business_days",
+          "when": {
+            "ship_month_day_range": [
+              "12-22",
+              "12-25"
+            ]
+          },
+          "business_days": 2,
+          "applies_to_rules": [
+            "usps-priority-mail-express"
+          ],
+          "only_if_service_contains": "1 day",
+          "verified_on": "2026-09-27",
+          "source_url": "https://pe.usps.com/text/dmm300/604.htm",
+          "citation": "DMM 604.9.5.5: no refund if a Priority Mail Express 1-Day item mailed Dec 22-25 was delivered or attempted within 2 business days of mailing. Business days here skip Sundays and the USPS holidays list."
+        }
+      ]
+    }
+  },
+  "rules": [
+    {
+      "id": "fedex-us-time-definite",
+      "carrier": "FEDEX",
+      "services": [
+        "first overnight",
+        "priority overnight",
+        "standard overnight",
+        "2day am",
+        "first overnight extra hours",
+        "priority overnight extra hours",
+        "standard overnight extra hours",
+        "2 day am"
+      ],
+      "guaranteed": true,
+      "verification": "verified",
+      "verified_on": "2026-09-27",
+      "effective_ship_from": "2026-01-13",
+      "effective_ship_to": null,
+      "grace_seconds": 59,
+      "date_only_commitment_time": "23:59:59",
+      "claim_window": {
+        "anchor": "invoice_date",
+        "fallback_anchor": "ship_date",
+        "days": 15
+      },
+      "source_url": "https://www.fedex.com/en-us/service-guide/money-back-guarantee.html",
+      "terms_url": "https://www.fedex.com/content/dam/fedex/us-united-states/services/Service_Guide_2026.pdf",
+      "citation": "FedEx MBG page: effective Feb. 12, 2026 the MBG applies to First Overnight, Priority Overnight, Standard Overnight, 2Day A.M. (+ Extra Hours contract variants); reinstated for packages shipped on or after Jan. 13, 2026. Service Guide 2026 MBG policy A: service failure = delivery 60 seconds or more after the commitment; D.3: request within 15 calendar days of the invoice date (15 days from ship date when paying by credit card, cash, check or money order).",
+      "notes": "Claim deadline uses invoice_date when the CSV has it, otherwise ship_date + 15 days (the earliest possible deadline, and exactly right for credit-card payers). The MBG is payer-only and one refund per package."
+    },
+    {
+      "id": "fedex-us-suspended-dec2025",
+      "carrier": "FEDEX",
+      "services": [
+        "first overnight",
+        "priority overnight",
+        "standard overnight",
+        "2day am",
+        "first overnight extra hours",
+        "priority overnight extra hours",
+        "standard overnight extra hours",
+        "2 day am"
+      ],
+      "guaranteed": false,
+      "verification": "verified",
+      "verified_on": "2026-09-27",
+      "effective_ship_from": "2025-12-01",
+      "effective_ship_to": "2026-01-12",
+      "source_url": "https://www.fedex.com/en-us/service-guide/money-back-guarantee.html",
+      "citation": "FedEx MBG page, 'Effective Dec. 1, 2025': MBG suspended for packages shipped on or after Dec. 1, 2025 for these services, until the Jan. 13, 2026 reinstatement.",
+      "notes": "Ship dates before Dec. 1, 2025 are not covered by any rule and default to not guaranteed; add a rule if you need to audit older shipments."
+    },
+    {
+      "id": "fedex-us-suspended",
+      "carrier": "FEDEX",
+      "services": [
+        "2day",
+        "express saver",
+        "ground",
+        "home delivery",
+        "ground economy",
+        "smartpost",
+        "1day freight",
+        "2day freight",
+        "3day freight",
+        "first overnight freight",
+        "sameday",
+        "2 day",
+        "ground home delivery"
+      ],
+      "guaranteed": false,
+      "verification": "verified",
+      "verified_on": "2026-09-27",
+      "effective_ship_from": null,
+      "effective_ship_to": null,
+      "source_url": "https://www.fedex.com/en-us/service-guide/money-back-guarantee.html",
+      "citation": "FedEx MBG page: 'the money-back guarantee for all other FedEx services will remain suspended until further notice.' Service Guide 2026: 'There are no delivery commitments for shipments on which the money-back guarantee is suspended.'",
+      "notes": "Listed explicitly so the output says 'suspended' rather than 'unknown service'."
+    },
+    {
+      "id": "fedex-intl-express",
+      "carrier": "FEDEX",
+      "services": [
+        "international first",
+        "international priority",
+        "international priority express",
+        "international priority freight",
+        "international priority directdistribution",
+        "international priority directdistribution freight"
+      ],
+      "guaranteed": true,
+      "verification": "verified",
+      "verified_on": "2026-09-27",
+      "effective_ship_from": "2026-02-12",
+      "effective_ship_to": null,
+      "grace_seconds": 59,
+      "date_only_commitment_time": "23:59:59",
+      "claim_window": {
+        "anchor": "invoice_date",
+        "fallback_anchor": "ship_date",
+        "days": 15,
+        "verified": false
+      },
+      "source_url": "https://www.fedex.com/en-us/service-guide/money-back-guarantee.html",
+      "terms_url": "https://www.fedex.com/content/dam/fedex/us-united-states/services/Service_Guide_2026.pdf",
+      "citation": "FedEx MBG page: reinstated for these international services (all lanes, U.S. payors) with a ship date starting Feb. 12, 2026. Shipments delayed by regulatory changes are not eligible.",
+      "notes": "International claim terms are in the Service Guide's international section; this tool assumes the same 15-day window as domestic - UNVERIFIED for international, check before filing. Destination zone must be given as dest_tz."
+    },
+    {
+      "id": "ups-us-air-guaranteed",
+      "carrier": "UPS",
+      "services": [
+        "next day air early",
+        "next day air early am",
+        "next day air",
+        "2nd day air am"
+      ],
+      "guaranteed": true,
+      "verification": "verified",
+      "verified_on": "2026-09-27",
+      "effective_ship_from": null,
+      "effective_ship_to": null,
+      "grace_seconds": 60,
+      "date_only_commitment_time": "23:59:59",
+      "claim_window": {
+        "anchor": "scheduled_delivery_date",
+        "days": 15
+      },
+      "residential_excluded_services": [
+        "2nd day air am"
+      ],
+      "commitment_adjustments": [
+        {
+          "kind": "move_time",
+          "services": [
+            "next day air"
+          ],
+          "from_time": "10:30",
+          "to_time": "12:00",
+          "when_residential": [
+            true,
+            null
+          ],
+          "citation": "ups.com/serviceguarantee: since Oct. 18, 2021, UPS Next Day Air to residential locations with a typical 10:30 AM commitment is extended to 12:00 PM for the guarantee. Applied when residential is true OR unknown (conservative)."
+        }
+      ],
+      "source_url": "https://www.ups.com/us/en/support/shipping-support/legal-terms-conditions/ups-service-guarantee",
+      "terms_url": "https://www.ups.com/assets/resources/webcontent/en_US/terms_service_us.pdf",
+      "citation": "ups.com/serviceguarantee: Service Guarantee currently active for Next Day Air Early, Next Day Air, Next Day Air Saver, 2nd Day Air A.M.; suspended for all other services. UPS Tariff/Terms (effective Apr. 17, 2026) sec. 54.1: on time = attempted before or within 60 seconds of the published time; notify UPS within 15 calendar days of the scheduled delivery date (or of UPS amending the delivery time, whichever is later); refund is transportation charges only, payer only. 54.2: 2nd Day Air A.M. residential deliveries are not guaranteed.",
+      "notes": "UPS counts a delivery ATTEMPT as on time; if your export has first_attempt it is used. Refund excludes fuel surcharge and other fees."
+    },
+    {
+      "id": "ups-us-nda-saver",
+      "carrier": "UPS",
+      "services": [
+        "next day air saver"
+      ],
+      "guaranteed": true,
+      "verification": "verified",
+      "verified_on": "2026-09-27",
+      "effective_ship_from": null,
+      "effective_ship_to": null,
+      "grace_seconds": 60,
+      "date_only_commitment_time": "23:59:59",
+      "claim_window": {
+        "anchor": "scheduled_delivery_date",
+        "days": 15
+      },
+      "commitment_adjustments": [
+        {
+          "kind": "set_time",
+          "to_time": "23:59:00",
+          "citation": "ups.com/serviceguarantee: 'Until further notice, the guaranteed delivery time for UPS Next Day Air Saver deliveries has been extended to end-of-day (11:59 p.m. on the guaranteed day of delivery).'"
+        }
+      ],
+      "source_url": "https://www.ups.com/us/en/support/shipping-support/legal-terms-conditions/ups-service-guarantee",
+      "terms_url": "https://www.ups.com/assets/resources/webcontent/en_US/terms_service_us.pdf",
+      "citation": "ups.com/serviceguarantee: Next Day Air Saver guarantee active, commitment extended to 11:59 p.m. on the guaranteed day. Tariff/Terms sec. 54.1: 15 calendar days from the scheduled delivery date to notify UPS.",
+      "notes": ""
+    },
+    {
+      "id": "ups-intl-guaranteed",
+      "carrier": "UPS",
+      "services": [
+        "worldwide express plus",
+        "worldwide express",
+        "worldwide express na1",
+        "worldwide express saver",
+        "worldwide saver",
+        "worldwide express freight",
+        "worldwide express freight midday"
+      ],
+      "guaranteed": true,
+      "verification": "verified",
+      "verified_on": "2026-09-27",
+      "effective_ship_from": null,
+      "effective_ship_to": null,
+      "grace_seconds": 60,
+      "date_only_commitment_time": "23:59:59",
+      "claim_window": {
+        "anchor": "scheduled_delivery_date",
+        "days": 15
+      },
+      "source_url": "https://www.ups.com/us/en/support/shipping-support/legal-terms-conditions/ups-service-guarantee",
+      "terms_url": "https://www.ups.com/assets/resources/webcontent/en_US/terms_service_us.pdf",
+      "citation": "ups.com/serviceguarantee lists these international services as active. Tariff/Terms sec. 54: guaranteed only where customs clearance is performed by UPS-designated brokerage offices.",
+      "notes": "Customs-clearance condition cannot be checked from a CSV; treat results as candidates only. Destination zone must be given as dest_tz."
+    },
+    {
+      "id": "ups-suspended",
+      "carrier": "UPS",
+      "services": [
+        "ground",
+        "ground saver",
+        "surepost",
+        "2nd day air",
+        "3 day select",
+        "standard",
+        "worldwide expedited",
+        "worldwide economy",
+        "mail innovations",
+        "ground with freight pricing"
+      ],
+      "guaranteed": false,
+      "verification": "verified",
+      "verified_on": "2026-09-27",
+      "effective_ship_from": null,
+      "effective_ship_to": null,
+      "source_url": "https://www.ups.com/us/en/support/shipping-support/legal-terms-conditions/ups-service-guarantee",
+      "citation": "ups.com/serviceguarantee: 'The UPS Service Guarantee remains suspended for all other UPS shipments and services not specified in the above sections, from any origin to any destination.' Tariff/Terms sec. 7: UPS may delay Ground and other non-guaranteed packages one additional day.",
+      "notes": "Listed explicitly so the output says 'suspended' rather than 'unknown service'."
+    },
+    {
+      "id": "usps-priority-mail-express",
+      "carrier": "USPS",
+      "services": [
+        "priority mail express",
+        "priority mail express 1 day",
+        "priority mail express 2 day",
+        "priority mail express 3 day",
+        "express mail",
+        "pme"
+      ],
+      "guaranteed": true,
+      "verification": "verified",
+      "verified_on": "2026-09-27",
+      "effective_ship_from": null,
+      "effective_ship_to": null,
+      "grace_seconds": 0,
+      "date_only_commitment_time": "18:00",
+      "claim_window": {
+        "anchor": "ship_date",
+        "days": 30,
+        "earliest_days": 2
+      },
+      "excluded_dest_states": [
+        "AK",
+        "HI",
+        "GU",
+        "AS",
+        "MP",
+        "PW",
+        "MH",
+        "FM"
+      ],
+      "source_url": "https://pe.usps.com/text/dmm300/604.htm",
+      "citation": "DMM 604.9.5.1: USPS refunds postage if the item was not delivered, not attempted, or not made available for claim by the delivery date and time specified at mailing. Exhibit 9.2.1: Priority Mail Express refund requests no sooner than 2 days and no later than 30 days from the mailing date (30-60 days with an extra service). 9.5.5: no refund (other than for loss) for items to/from Alaska, Hawaii, Guam, American Samoa, CNMI, Palau, Marshall Islands, Micronesia.",
+      "notes": "date_only_commitment_time 18:00 is an ASSUMPTION (USPS labels normally carry a guaranteed time such as 6:00 PM; give promised as a datetime when you have it). Origin-side exclusions (mailed FROM AK/HI etc.) are not checked. With an extra service the window is 30-60 days; edit claim_window if that applies to you."
+    },
+    {
+      "id": "usps-no-guarantee",
+      "carrier": "USPS",
+      "services": [
+        "priority mail",
+        "ground advantage",
+        "first class",
+        "first class package",
+        "parcel select",
+        "media mail",
+        "library mail",
+        "priority mail cubic",
+        "ground advantage cubic",
+        "retail ground",
+        "priority",
+        "ground advantage parcel"
+      ],
+      "guaranteed": false,
+      "verification": "verified",
+      "verified_on": "2026-09-27",
+      "effective_ship_from": null,
+      "effective_ship_to": null,
+      "source_url": "https://pe.usps.com/text/dmm300/604.htm",
+      "citation": "DMM 604.9.5 provides a delivery-failure postage refund only for Priority Mail Express. Other classes have delivery standards/estimates, not a money-back guarantee.",
+      "notes": "USPS complaints for non-Express mail are service requests, not refunds."
+    }
+  ]
+}
