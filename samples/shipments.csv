@@ -1,0 +1,26 @@
+tracking_number,carrier,service,ship_date,promised,delivered,dest_zip,dest_state,dest_tz,residential,exception_codes,invoice_date,note
+1Z999AA10000000001,UPS,UPS Next Day Air,2026-09-14,2026-09-15 10:30,2026-09-15T14:05:00Z,10001,NY,,no,,,on time: 10:05 EDT
+1Z999AA10000000002,UPS,UPS Next Day Air,2026-09-15,2026-09-16 10:30,09/16/2026 11:47 AM,60601,IL,,no,,,late 77 min (naive local timestamp)
+1Z999AA10000000003,UPS,UPS Next Day Air,2026-09-15,2026-09-16 10:30,2026-09-16 11:40,90012,CA,,,,,on time: residential unknown so the 10:30 commitment moves to 12:00
+1Z999AA10000000004,UPS,UPS Next Day Air Saver®,2026-09-16,2026-09-17 15:00,2026-09-17 21:10,80202,CO,,no,,,on time: NDA Saver guarantee runs to 11:59 pm
+1Z999AA10000000005,UPS,UPS Next Day Air Saver,2026-09-16,2026-09-17,2026-09-18 09:12,80202,CO,,no,,,late: delivered next morning
+1Z999AA10000000006,UPS,UPS 2nd Day Air A.M.,2026-09-14,2026-09-16 10:30,2026-09-16 15:00,30303,GA,,yes,,,excluded: 2nd Day Air A.M. residential
+1Z999AA10000000007,UPS,UPS Ground,2026-09-10,2026-09-14,2026-09-16 13:00,33101,FL,,no,,,no guarantee: UPS Ground suspended
+1Z999AA10000000008,UPS,UPS Next Day Air,2026-09-17,2026-09-18 10:30,2026-09-18 16:20,02108,MA,,no,WEATHER,,excluded: weather exception
+1Z999AA10000000009,UPS,UPS Next Day Air,2026-08-31,2026-09-01 10:30,2026-09-01 13:00,98101,WA,,no,,,late but UPS 15-day window closed 2026-09-16
+1Z999AA10000000010,UPS,UPS Next Day Air,2026-09-24,2026-09-25 10:30,,19103,PA,,no,,,pending: not delivered
+1Z999AA10000000011,UPS,UPS Next Day Air,2026-09-21,2026-09-22 10:30,2026-09-22 12:30,,,,no,,,review: no destination given
+1Z999AA10000000012,UPS,UPS Next Day Air,2026-09-21,2026-09-22 10:30,2026-09-22 12:30,55401,MN,,no,MISSORT,,review: unrecognised exception code
+799999990001,FedEx,FedEx Standard Overnight,2026-09-21,2026-09-22 16:30,2026-09-22T22:15:00Z,79901,TX,,no,,,on time: El Paso is Mountain (16:15 MDT)
+799999990002,FedEx,FedEx 2Day A.M.,2026-09-21,2026-09-23 10:30,2026-09-23 11:02:00-04:00,10013,NY,,no,,2026-09-25,late 32 min; 15 days from invoice date
+799999990003,FedEx,FedEx 2Day,2026-09-21,2026-09-23,2026-09-24 14:00,10013,NY,,no,,,no guarantee: FedEx 2Day still suspended
+799999990004,FEDEX_GROUND,FEDEX_GROUND,2026-09-15,2026-09-18,2026-09-21 14:00,73301,TX,,no,,,no guarantee: FedEx Ground suspended
+799999990005,FedEx,PRIORITY_OVERNIGHT,2025-12-10,2025-12-11 10:30,2025-12-11 14:00,94103,CA,,no,,,no guarantee: shipped in Dec 2025 suspension
+799999990006,FedEx,FedEx Priority Overnight,2026-09-08,2026-09-09 10:30,2026-09-09 11:45,20001,DC,,no,,,on time: Sept 9-10 2026 +90 min extension
+799999990007,FedEx,FedEx Standard Overnight,2026-09-23,2026-09-24,2026-09-25T03:30:00Z,94103,CA,,no,,,on time: UTC says Sep 25 but local is 20:30 Sep 24
+799999990008,FedEx,FedEx First Overnight,2026-09-22,2026-09-23 08:00,2026-09-23 10:10,77002,TX,,no,INCORRECT_ADDRESS,,excluded: incorrect address
+799999990009,FedEx,FedEx Priority Overnight,2026-09-24,2026-09-25 10:30,2026-09-25T15:12:00Z,,,America/Detroit,no,,,late 42 min: explicit tz; UTC timestamp
+EF999999901US,USPS,Priority Mail Express 2-Day,2026-09-19,2026-09-21 18:00,2026-09-22 12:10,63101,MO,,,,,late: PME refund 2-30 days after mailing
+EF999999902US,USPS,Priority Mail Express,2026-09-19,2026-09-21 18:00,2026-09-23 10:00,96813,HI,,,,,excluded: Hawaii destination
+9400199999000000000013,USPS,USPS Priority Mail,2026-09-15,2026-09-17,2026-09-22 11:00,85004,AZ,,,,,no guarantee: Priority Mail
+9400199999000000000014,USPS,USPS Ground Advantage,2026-09-15,2026-09-18,2026-09-24 11:00,97201,OR,,,,,no guarantee: Ground Advantage
